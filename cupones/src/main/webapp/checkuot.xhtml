@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"	
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link href="../css/menu.css" rel="stylesheet" type="text/css" />
+	<link href="../css/oferta.css" rel="stylesheet" type="text/css" />
+
+	<title>Listado de Cupones</title>
+	<script
+		src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAtRLgopSfFn_inKV4Mb4dwRQrh986W3YN5ROngdOVRv-81htxfBSHsTcVUm4HRkCt9bSp5mP_3_snrw"
+		type="text/javascript"></script>
+
+
+	<script type="text/javascript"
+		src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "95f5e632-24ae-490d-a0c4-6ed1a2a56230", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+</h:head>
+
+<h:body id="body" styleClass="body-cont">
+	<p:outputPanel id="header-inner" styleClass="cabeza" deferred="TRUE"
+		deferredMode="visible">
+
+		<a href="../index.xhtml"><p:graphicImage
+				value="../imagenes/logo.png" width="327" height="115" /></a>
+		<h:form>
+			<p:outputPanel id="listCiudades" styleClass="listCiudades">
+				<p:dataGrid columns="2" layout="grid" styleClass="panelGrid">
+					<h:outputLabel value="Cerca de ti" for="listaCiudades" />
+					<p:selectOneMenu id="listaCiudades" value="#{menuBean.ciudad}">
+						<f:selectItem itemLabel="Seleccione una" itemValue="" />
+						<f:selectItems value="#{menuBean.ciudades}" />
+					</p:selectOneMenu>
+				</p:dataGrid>
+			</p:outputPanel>
+		</h:form>
+		<nav class="topMenu">    
+			<ul id="menu">
+				<li><a href="../deals/cuponesdia.jsf">Todas las Ofertas</a></li>
+				<li><a href="#">Oferta de Hoy</a></li>
+				<li><a href="#">Belleza y Spa</a></li>
+				<li><a href="#">Restaurantes</a></li>
+				<li><a href="#">Auto</a></li>
+				<li><a href="#">Hoteles y Entretenimiento</a></li>
+				<li></li>
+				<li><a href="#">San Valentin</a></li>
+				<li><div class="#"></div> <a href="#">Navidad</a></li>
+			</ul>
+		</nav>
+	</p:outputPanel>
+	<!-- 		Contenido del cuerpo de la pagina -->
+	<div id="cuerpo">
+
+		<div id="contenido">
+		
+		</div>
+		
+		<div id="lateral">
+		
+		</div>
+
+		<div id="otrasOfertas">
+			
+		</div>
+
+	</div>
+
+	<footer id="footer" Class="pie">
+		<p>@ 2015 Derechos Reservados.</p>
+	</footer>
+
+
+	<!-- 	</p:outputPanel> -->
+	<a href='URL_De_Twitter'
+		style='display: scroll; position: fixed; bottom: 330px; right: 0px;'
+		target='_blank'><img border='0'
+		src='http://2.bp.blogspot.com/-r2kTvDo3bfw/Toc-MKnFfxI/AAAAAAAAA3A/3f86LWBmR38/s1600/boton%252520twitter.png'
+		title='Siguirnos en Twitter' /></a>
+
+	<a href='URL_De_Facebook'
+		style='display: scroll; position: fixed; bottom: 185px; right: 0px;'
+		target='_blank'><img border='0'
+		src='http://1.bp.blogspot.com/-7VSvlkal0os/UFORwVAFAZI/AAAAAAAAHkg/nhegYirxh5g/s1600/boton+facebook_opt.png'
+		title='Siguirnos en Facebook' /></a>
+
+	<a href='URL_De_Google+'
+		style='display: scroll; position: fixed; bottom: 41px; right: 0px;'
+		target='_blank'><img border='0'
+		src='http://4.bp.blogspot.com/-idti1v7hB8w/UFN_GPFp2NI/AAAAAAAAHjA/16kXdqvAXHQ/s1600/aizumgoogle+.png'
+		title='Siguirnos en Google+' /></a>
+</h:body>
+</html>
