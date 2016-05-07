@@ -24,6 +24,10 @@
 	<class>com.cupones.domain.Usuario</class>
 	<class>com.cupones.domain.CarritoCompra</class>
 	<class>com.cupones.domain.CarritoCompraPK</class>
+	<class>com.cupones.domain.LibroDireccione</class>
+	<class>com.cupones.domain.LibroDireccionePK</class>
+	<class>com.cupones.domain.Tarjeta</class>
+	<class>com.cupones.domain.TarjetaPK</class>
 		<!-- <properties> -->
 		<!-- <property name="hibernate.connection.username" value="root"/> -->
 		<!-- <property name="hibernate.connection.password" value="admin"/> -->
