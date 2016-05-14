@@ -2,11 +2,13 @@ package com.cupones.eis;
 
 import java.util.List;
 
+import javax.ejb.Remote;
+
 import com.cupones.domain.Tarjeta;
 import com.cupones.domain.Usuario;
 
 
-
+@Remote
 public interface TarjetaDao {
 
 	public List<Tarjeta> findAllTarjeta();

@@ -2,6 +2,7 @@ package com.cupones.eis;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -9,6 +10,7 @@ import javax.persistence.Query;
 import com.cupones.domain.LibroDireccione;
 import com.cupones.domain.Usuario;
 
+@Stateless
 public class LibroDireccioneDaoImpl implements LibroDireccioneDao {
     
 	@PersistenceContext(unitName = "CuponesPU")

@@ -1,15 +1,21 @@
 com/cupones/servicio/CategoriaServiceImpl.class
 com/cupones/eis/UsuarioDao.class
 com/cupones/domain/Pais.class
+com/cupones/domain/Tarjeta.class
+com/cupones/domain/TarjetaPK.class
 com/cupones/domain/Role.class
+com/cupones/domain/LibroDireccione.class
 com/cupones/eis/PaisDao.class
 com/cupones/eis/ClienteDao.class
 com/cupones/servicio/OfertaService.class
 com/cupones/servicio/DetalleSolicitudServiceImpl.class
+com/cupones/eis/LibroDireccioneDao.class
 com/cupones/domain/Provincia.class
 com/cupones/domain/Estado.class
+com/cupones/eis/LibroDireccioneDaoImpl.class
 com/cupones/beans/CartBean.class
 com/cupones/eis/CarritoCompraDao.class
+com/cupones/servicio/TarjetaService.class
 com/cupones/domain/Usuario.class
 com/cupones/domain/DetallePedido.class
 com/cupones/domain/RolePK.class
@@ -19,6 +25,7 @@ com/cupones/servicio/UsuarioService.class
 com/cupones/servicio/ProvinciaService.class
 com/cupones/servicio/DetallePedidoServiceImpl.class
 com/cupones/prueba/ciclovida/DepuracionListener.class
+com/cupones/servicio/LibroDireccioneService.class
 com/cupones/util/CategoriaConverter.class
 com/cupones/domain/Cliente.class
 com/cupones/beans/OfertaBean.class
@@ -26,10 +33,12 @@ com/cupones/domain/DetalleSolicitud.class
 com/cupones/conexion/ConexionDB.class
 com/cupones/servicio/SectorServiceImpl.class
 com/cupones/eis/OfertaDao.class
+com/cupones/eis/TarjetaDao.class
 com/cupones/eis/FotoDao.class
 com/cupones/servicio/ProvinciaServiceImpl.class
 com/cupones/servicio/CarritoCompraService.class
 com/cupones/beans/InfoWindowBean.class
+com/cupones/servicio/TarjetaServiceImpl.class
 com/cupones/eis/ProvinciaDaoImpl.class
 com/cupones/servicio/ClienteServiceImpl.class
 com/cupones/beans/MenuBean.class
@@ -42,6 +51,7 @@ com/cupones/eis/SolicitudDao.class
 com/cupones/eis/DetallePedidoDaoImpl.class
 com/cupones/eis/SectorDao.class
 com/cupones/beans/UsuarioBean.class
+com/cupones/domain/LibroDireccionePK.class
 com/cupones/servicio/CategoriaService.class
 com/cupones/domain/DetalleSolicitudPK.class
 com/cupones/eis/SolicitudDaoImpl.class
@@ -51,6 +61,7 @@ com/cupones/servicio/OfertaServiceImpl.class
 com/cupones/servicio/SolicitudServiceImpl.class
 com/cupones/servicio/SectorService.class
 com/cupones/domain/DetallePedidoPK.class
+com/cupones/servicio/LibroDireccioneServiceImpl.class
 com/cupones/servicio/RoleServiceImpl.class
 com/cupones/beans/ClienteBean.class
 com/cupones/eis/PedidoDaoImpl.class
@@ -75,6 +86,7 @@ com/cupones/servicio/UsuarioServiceImpl.class
 com/cupones/domain/CarritoCompraPK.class
 com/cupones/eis/PedidoDao.class
 com/cupones/beans/SessionBean.class
+com/cupones/eis/TarjetaDaoImpl.class
 com/cupones/eis/EstadoDaoImpl.class
 com/cupones/beans/AuthorizationFilter.class
 com/cupones/servicio/FotoService.class
@@ -92,5 +104,6 @@ com/cupones/servicio/DetalleSolicitudService.class
 com/cupones/eis/CategoriaDao.class
 com/cupones/eis/SectorDaoImpl.class
 com/cupones/domain/Pedido.class
+com/cupones/beans/LibroDireccioneBean.class
 com/cupones/eis/RoleDaoImpl.class
 com/cupones/eis/DetalleSolicitudDao.class

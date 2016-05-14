@@ -2,13 +2,14 @@ package com.cupones.eis;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.cupones.domain.Tarjeta;
 import com.cupones.domain.Usuario;
-
+@Stateless
 public class TarjetaDaoImpl implements TarjetaDao {
 	@PersistenceContext(unitName = "CuponesPU")
 	EntityManager em;

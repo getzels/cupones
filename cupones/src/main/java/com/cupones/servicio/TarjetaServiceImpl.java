@@ -2,10 +2,13 @@ package com.cupones.servicio;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import com.cupones.domain.Tarjeta;
 import com.cupones.domain.Usuario;
 import com.cupones.eis.TarjetaDao;
 
+@Stateless
 public class TarjetaServiceImpl implements TarjetaService, TarjetaDao {
 
 	@Override

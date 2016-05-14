@@ -3,11 +3,13 @@ package com.cupones.servicio;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 
 import com.cupones.domain.LibroDireccione;
 import com.cupones.domain.Usuario;
 import com.cupones.eis.LibroDireccioneDao;
 
+@Stateless
 public class LibroDireccioneServiceImpl implements LibroDireccioneService {
 
 	@EJB
