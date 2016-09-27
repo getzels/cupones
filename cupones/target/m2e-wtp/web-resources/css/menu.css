@@ -1,0 +1,139 @@
+#menu {
+	margin: 0;
+	height: 24px;
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0px;
+	font-family: Khmer OS;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 14px;
+	padding: 0;}
+
+#menu li {
+	margin: 0;
+	padding: 0;
+	float: left;
+	position: relative;
+	/*background: url(../images/separa_menu.jpg) right no-repeat;*/
+	list-style: none;	
+}
+.nosepara{
+	background:none !important;
+}
+/* main level link */
+
+#menu a {
+	font-weight: normal;
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	padding: 0px 23px 0px 23px;
+	margin: 0;
+}
+/* main level link hover */
+
+#menu .current a, #menu li:hover > a {
+	color: #fff;
+	text-decoration:underline;
+}
+/* sub levels link hover */
+
+#menu ul li:hover a, #menu li:hover li a {
+	background: none;
+	border: none;
+	color: #fff;
+	font-weight: normal;
+}
+#menu ul a:hover {
+	background: #6C6C6C !important; /* for non-css3 browsers */
+	color: #fff !important;
+}
+/* level 2 list */
+
+#menu ul {
+	display: none;
+	width: 200px;
+	position: absolute;
+	top: 52px;
+	left: -4px;
+	border: solid 1px #CCC;
+	padding: 4px;
+	background-color: #FFF;
+}
+/* dropdown */
+
+#menu li:hover > ul {
+	display: block;
+}
+#menu ul li {
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+#menu ul a {
+	font-weight: normal;
+	font-size: 11px;
+	padding: 12px 5px 12px 15px;
+}
+/* level 3+ list */
+
+#menu ul ul {
+	left: 200px;
+	top: -5px;
+	width: 290px;
+}
+/* rounded corners for first and last child */
+
+
+
+/* clearfix */
+
+#menu:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+#menu {
+	display: inline-block;
+}
+html[xmlns] #menu {
+	display: block;
+}
+* html #menu {
+	height: 1%;
+}
+#menu .navidad-bkg {
+	background-color: #E7136F;
+	margin-left: 1px;
+	margin-right: 2px;
+	height: 24px;
+	margin-top: 3px;
+	position: absolute;
+	z-index: -1;
+	width: 90px;
+}
+#menu .valentin-bkg {
+	background-color: #DC143C;
+	margin-left: 1px;
+	margin-right: 2px;
+	height: 24px;
+	margin-top: 3px;
+	position: absolute;
+	z-index: -1;
+	width: 114px;
+}
+#menu .black-bkg {
+	background-color: black;
+	margin-left: 1px;
+	margin-right: 2px;
+	height: 24px;
+	margin-top: 3px;
+	position: absolute;
+	z-index: -1;
+	width: 112px;
+}
