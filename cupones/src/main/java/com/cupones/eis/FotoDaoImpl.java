@@ -17,12 +17,10 @@ public class FotoDaoImpl implements FotoDao {
 	EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Foto> findAllFoto() {
 		return em.createNamedQuery("Foto.findAll").getResultList();
 	}
 
-	@Override
 	public List<Foto> findFotoById(Foto foto) {
 		Query query = em.createQuery("select f from Foto f where f.id.idFotos = :id");
 		query.setParameter("id", foto.getId().getIdFotos());
@@ -32,7 +30,6 @@ public class FotoDaoImpl implements FotoDao {
 		return fotos;
 	}
 
-	@Override
 	public Foto findFotoByIdAndName(Foto foto) {
 		Query query = em
 				.createQuery("select p from Foto p where p.id = :id and p.descripcion = :desc");
@@ -42,19 +39,16 @@ public class FotoDaoImpl implements FotoDao {
 		return (Foto) query.getSingleResult();
 	}
 
-	@Override
 	public void addFoto(Foto foto) {
 		em.persist(foto);
 
 	}
 
-	@Override
 	public void updateFoto(Foto foto) {
 		em.merge(foto);
 
 	}
 
-	@Override
 	public void deleteFoto(Foto foto) {
 		foto = em.find(Foto.class, foto.getId());
 		em.remove(foto);

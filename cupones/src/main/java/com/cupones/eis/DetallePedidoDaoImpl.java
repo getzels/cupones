@@ -15,29 +15,24 @@ public class DetallePedidoDaoImpl implements DetallePedidoDao {
 	EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<DetallePedido> findAllDetallePedido() {
 		return em.createNamedQuery("DetallePedido.findAll").getResultList();
 	}
 
-	@Override
 	public DetallePedido findDetallePedidoById(DetallePedido detallePedido) {
 		return em.find(DetallePedido.class, detallePedido.getId());
 	}
 
-	@Override
 	public void addDetallePedido(DetallePedido detallePedido) {
 		em.persist(detallePedido);
 
 	}
 
-	@Override
 	public void updateDetallePedido(DetallePedido detallePedido) {
 		em.merge(detallePedido);
 
 	}
 
-	@Override
 	public void deleteDetallePedido(DetallePedido detallePedido) {
 		detallePedido = em.find(DetallePedido.class, detallePedido.getId());
 		em.remove(detallePedido);

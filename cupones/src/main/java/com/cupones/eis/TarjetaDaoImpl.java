@@ -15,32 +15,32 @@ public class TarjetaDaoImpl implements TarjetaDao {
 	EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Tarjeta> findAllTarjeta() {
 		return em.createNamedQuery("Tarjeta.findAll").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Tarjeta> findTarjetaById(Usuario usuario) {
 		Query query = em.createQuery("select l from Tarjeta l where l.id.idUsuario = :id");
 		query.setParameter("id", usuario.getIdUsuario());
 		return query.getResultList();
 	}
 
-	@Override
+	
 	public void addTarjeta(Tarjeta tarjeta) {
 		em.persist(tarjeta);
 
 	}
 
-	@Override
+	
 	public void updateTarjeta(Tarjeta tarjeta) {
 	em.merge(tarjeta);
 
 	}
 
-	@Override
+	
 	public void deleteTarjeta(Tarjeta tarjeta) {
 		em.remove(tarjeta);
 

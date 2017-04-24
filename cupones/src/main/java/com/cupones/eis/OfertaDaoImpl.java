@@ -17,12 +17,12 @@ public class OfertaDaoImpl implements OfertaDao {
 	private EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Oferta> findAllOferta() {
 		return em.createNamedQuery("Oferta.findAll").getResultList();
 	}
 
-	@Override
+	
 	public Oferta findOfertaById(Oferta oferta) {
 		try{
 		Query query = em
@@ -43,7 +43,7 @@ public class OfertaDaoImpl implements OfertaDao {
 		 return new Oferta(1);
 	}
   
-	@Override
+	
 	public void addOferta(Oferta oferta) {
 		// System.out.println("**************addOferta**************");
 
@@ -52,20 +52,20 @@ public class OfertaDaoImpl implements OfertaDao {
 		// System.out.println("***********Persistio exitosamente*************");
 	}
 
-	@Override
+	
 	public void updateOferta(Oferta oferta) {
 		em.merge(oferta);
 
 	}
 
-	@Override
+	
 	public void deleteOferta(Oferta oferta) {
 		oferta = em.find(Oferta.class, oferta.getIdOferta());
 		em.remove(oferta);
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Foto> findFotosOferta(Oferta oferta) {
 		String consulta = "select f from Oferta o, Foto f where o.idOferta = :id and o.idOferta = f.oferta.idOferta";
 		

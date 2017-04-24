@@ -19,27 +19,27 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 	EntityManager em;
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Provincia> findALLProvincia() {
 		return em.createNamedQuery("Provincia.findAll").getResultList();
 	}
 
-	@Override
+	
 	public Provincia findProvinciaById(Provincia provincia) {
 		return em.find(Provincia.class, provincia.getIdProvincia());
 	}
 
-	@Override
+	
 	public void addProvincia(Provincia provincia) {
 	    em.persist(provincia);
 	}
 
-	@Override
+	
 	public void updateProvincia(Provincia provincia) {
        em.merge(provincia);
 	}
 
-	@Override
+	
 	public void deleteProvincia(Provincia provincia) {
       provincia = em.find(Provincia.class, provincia.getIdProvincia());
       em.remove(provincia);
@@ -47,7 +47,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Provincia> findProvinciaByPais(Pais pais) {
 		Query query = em.createQuery("select p from Provincia p where p.pais.idPais = :idPais");
 		query.setParameter("idPais", pais.getIdPais());

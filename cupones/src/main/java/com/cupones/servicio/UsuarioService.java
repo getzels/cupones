@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import com.cupones.domain.Usuario;
+import com.cupones.excepciones.InternalServicesException;
 
 @Remote
 public interface UsuarioService {
@@ -22,5 +23,5 @@ public interface UsuarioService {
 	
 	public void deleteUser(Usuario usuario) throws Exception;
 	
-	public boolean validate(Usuario usuario);
+	public boolean validate(Usuario usuario) throws InternalServicesException;
 }

@@ -17,7 +17,7 @@ public class LibroDireccioneDaoImpl implements LibroDireccioneDao {
 	EntityManager em;
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<LibroDireccione> findAllLibroDireccione() {
 		
 		return em.createNamedQuery("LibroDireccione.findAll").getResultList();
@@ -25,7 +25,7 @@ public class LibroDireccioneDaoImpl implements LibroDireccioneDao {
     
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<LibroDireccione> findLibroDireccioneById(Usuario usuario) {
 		Query query = em.createQuery("select l from LibroDireccione l where l.id.idUsuario = :id");
 		query.setParameter(1, usuario.getIdUsuario());
@@ -33,19 +33,19 @@ public class LibroDireccioneDaoImpl implements LibroDireccioneDao {
 		return query.getResultList();
 	}
 
-	@Override
+	
 	public void addLibroDireccione(LibroDireccione libroDireccione) {
 		em.persist(libroDireccione);
 
 	}
 
-	@Override
+	
 	public void updateLibroDireccione(LibroDireccione libroDireccione) {
 		em.merge(libroDireccione);
 
 	}
 
-	@Override
+	
 	public void deleteLibroDireccione(LibroDireccione libroDireccione) {
 		em.remove(libroDireccione);
 

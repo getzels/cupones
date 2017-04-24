@@ -17,12 +17,12 @@ public class EstadoServiceImpl implements EstadoService {
 	@EJB
 	EstadoDao estadoDao;
 
-	@Override
+	
 	public List<Estado> findAllEstado() {
 		return estadoDao.findAllEstado();
 	}
 
-	@Override
+	
 	public Map<String, Integer> findAllEstado2() {
 		Map<String, Integer> estados = new HashMap<String, Integer>();
 
@@ -35,29 +35,29 @@ public class EstadoServiceImpl implements EstadoService {
 		return estados;
 	}
 
-	@Override
+	
 	public Estado findEstadoById(Estado estado) {
 		return estadoDao.findEstadoById(estado);
 	}
 
-	@Override
+	
 	public Estado findEstadoByName(Estado estado) {
 		return estadoDao.findEstadoByName(estado);
 	}
 
-	@Override
+	
 	public void addEstado(Estado estado) {
 		estadoDao.addEstado(estado);
 
 	}
 
-	@Override
+	
 	public void updateEstado(Estado estado) {
 		estadoDao.updateEstado(estado);
 
 	}
 
-	@Override
+	
 	public void deleteEstado(Estado estado) {
 		estadoDao.deleteEstado(estado);
 	}

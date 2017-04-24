@@ -7,6 +7,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.cupones.domain.Estado;
 import com.cupones.servicio.EstadoService;
 
@@ -14,49 +17,44 @@ import com.cupones.servicio.EstadoService;
 @FacesConverter("com.cupones.util.EstadoConverter")
 public class EstadoConverter implements Converter {
 
+	private static final Logger logger = LogManager.getLogger(EstadoConverter.class);
+
 	@EJB
-	EstadoService estadoService; 
+	private EstadoService estadoService;
 
-
-	@Override 
-	public Object getAsObject(FacesContext facesContext, UIComponent component,
-			String value) {
+	public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
 
 		try {
-           
+
 			if (!value.isEmpty()) {
-             System.out.println("Se esta buscando el estado con el id " + value);
-			
-             Estado estado = estadoService.findEstadoById(new Estado(Integer.parseInt(value)));
-             
-            // System.out.println("****" + estado);
+				logger.debug("Se esta buscando el estado con el id " + value);
+
+				Estado estado = estadoService.findEstadoById(new Estado(Integer.parseInt(value)));
+
+				logger.debug("estado " + estado);
 
 				if (estado != null) {
-					//System.out.println("Retorno un estado" + estado);
+					logger.debug("Retorno un estado s" + estado);
 					return estado;
-				}else{
-					System.out.println("El estado esta nulo");
 				}
 
 			}
-
 		} catch (Exception e) {
 			Messageutil.mensajeError("Error convirtiendo el estado. " + e.getMessage());
-			e.printStackTrace();
-			System.out.println(e.getStackTrace());
+			logger.error("Error convirtiendo el estado. ", e);
+		} finally {
+			logger.traceExit();
 		}
-		System.out.println("Retorno nulo");
+		logger.debug("Retorno nulo");
 		return null;
 	}
 
-	@Override
-	public String getAsString(FacesContext facesContext, UIComponent component,
-			Object value) {
+	public String getAsString(FacesContext facesContext, UIComponent component, Object value) {
 
 		if (value instanceof Estado) {
 			return String.valueOf(((Estado) value).getIdEstado());
 		}
-		System.out.println("Retorno nulo 2");
+		logger.debug("Retorno nulo 2");
 		return null;
 	}
 }

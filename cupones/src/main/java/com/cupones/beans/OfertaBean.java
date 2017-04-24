@@ -2,7 +2,6 @@ package com.cupones.beans;
 
 import java.io.File;
 import java.io.InputStream;
-import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
@@ -15,7 +14,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.primefaces.model.UploadedFile;
 
 import com.cupones.domain.CarritoCompra;
@@ -35,14 +35,9 @@ import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 @ManagedBean
 @SessionScoped
-public class OfertaBean implements Serializable {
+public class OfertaBean {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@EJB
+	@EJB(name = "/com/cupones/servicio/OfertaService")
 	private OfertaService ofertaService;
 	@EJB
 	private CategoriaService categoriaService;
@@ -57,55 +52,63 @@ public class OfertaBean implements Serializable {
 
 	private List<Oferta> ofertas;
 	private Oferta oferta;
-	// private List<String> fotos;
 	private List<Estado> estados;
 	private List<Categoria> categorias;
 	private UploadedFile file;
 	private boolean visible = false;
 	private List<Foto> fotos;
 
-	private static Logger log = Logger.getLogger(OfertaBean.class.getName());
+	private static Logger logger = LogManager.getLogger(OfertaBean.class);
 
 	public OfertaBean() {
+		// Metodo para cumplir con el bean
 	}
 
 	@PostConstruct
 	public void inicializar() {
-		System.out.println("Inicio el Bean OfertaBean");
-		log.debug("*******************Inicio el Bean OfertaBean***************");
+		logger.traceEntry();
+
+		logger.debug("Buscando las ofertas");
 		ofertas = ofertaService.findAllOferta();
+		logger.debug("Se obtuvieron las ofertas " + ofertas);
 
+		logger.debug("Buscando las categorias");
 		categorias = categoriaService.findAllCategoria();
+		logger.debug("Se obtuvieron las categorias " + categorias);
 
+		logger.debug("Buscando las categorias");
 		estados = estadoService.findAllEstado();
+		logger.debug("Se obtuvieron las categorias " + categorias);
 
 		oferta = new Oferta();
 
+		logger.traceExit();
 	}
 
 	public String addToCart() throws MySQLIntegrityConstraintViolationException {
-		System.out.println("*******************Inicio del metodo addCart()*******************");
+		logger.traceEntry();
+
 		try {
 
 			Cliente cliente = clienteService.findClienteByUser("admin");
 
 			if (cliente != null) {
-				System.out.println(cliente);
-				CarritoCompra carrito = new CarritoCompra(1, new Date(), new Date(), 0.0, 1 * oferta.getValorOferta(),
+				logger.debug(cliente);
+				CarritoCompra carrito = new CarritoCompra(1, new Date(), new Date(), 0.0,"adimn", 1 , oferta.getValorOferta(),
 						SessionBean.getUsurioSession().getNombreUsuario(),
 						Integer.toString(SessionBean.getUsurioSession().getIdUsuario()), oferta.getValorOferta(),
 						oferta, cliente);
-				System.out.println(carrito);
+				logger.debug(carrito);
 				carritoCompra.addCarritoCompra(carrito);
 			} else {
-				System.out.println("El Objecto cliente no esta inicializado");
+				logger.debug("El Objecto cliente no esta inicializado");
 				return "error";
 			}
 
 			return "/user/cart" + "?faces-redirect=true";
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.debug(e.getMessage());
 			e.getMessage();
 			return "/user/cart" + "?faces-redirect=true";
 		}
@@ -113,88 +116,84 @@ public class OfertaBean implements Serializable {
 	}
 
 	public String eligeOferta(Oferta oferta) {
-		System.out.println("************Inicio el metodo eligeOferta************");
+		logger.debug("Inicio el metodo eligeOferta");
 
 		this.oferta = ofertaService.findOfertaById(oferta);
 
 		setFotos(ofertaService.findFotosOferta(oferta));
 
 		if (this.oferta != null) {
-			System.out.println("****Ojecto Oferta " + this.oferta.toString());
+			logger.debug("Ojecto Oferta " + this.oferta.toString());
 			return "oferta" + "?faces-redirect=true";
 		} else {
-			System.out.println("Ojecto persona null");
+			logger.debug("Ojecto persona null");
 			return null;
 		}
 	}
 
 	public String creaOferta() {
-		log.warn("*******************Iniciando el metodo crear***************");
-		System.out.println("*********Iniciando el metodo crear***********");
+		logger.trace("Iniciando el metodo crear");
+		logger.debug("Iniciando el metodo crear");
 		try {
 
 			oferta.setUsrCodigoCrea(SessionBean.getUsurioSession().getNombreUsuario());
 			oferta.setFechaHoraCrea(new Date());
 			oferta.setEstado(estadoService.findEstadoById(new Estado(1)));
 
-			System.out.println(oferta);
+			logger.debug(oferta);
 
 			// Oferta oferta1 = oferta;
 
-			System.out.println("Oferta1 " + oferta);
+			logger.debug("Oferta1 " + oferta);
 
 			String ruta = "/imagenes/oferta1/";
 
-			System.out.println("ruta " + ruta);
+			logger.debug("ruta " + ruta);
 
 			File folder = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath(ruta));
 
-			System.out.println("**********   1");
+			logger.debug("   1");
 
 			String fileName = FilenameUtils.getBaseName(file.getFileName());
 
-			System.out.println("**********   2");
+			logger.debug("   2");
 
 			String extencion = FilenameUtils.getExtension(file.getFileName());
 
-			System.out.println("**********   3" + file);
+			logger.debug("   3" + file);
 
 			File file2 = File.createTempFile(fileName + "-", "." + extencion, folder);
 
-			System.out.println(file2.getAbsolutePath() + "\\" + file2.getName());
+			logger.debug(file2.getAbsolutePath() + "\\" + file2.getName());
 
 			// Crea la instancia de la
 			Foto foto = new Foto("Oferta " + oferta.getNombreOferta(), fileName, file2.getAbsolutePath(),
 					ruta + file2.getName(), "A", new Date(), "user()", null, null, oferta);
 
-			System.out.println(foto);
 
 			if (foto != null) {
-				System.out.println("Insertando la oferta");
+				logger.debug("Insertando la oferta. " + foto);
 				fotoService.addFoto(foto);
-				System.out.println("Se creo la oferta con su foto");
+				logger.debug("Se creo la oferta con su foto");
 			}
 
 			Messageutil.mensajeInfo("Se guardo satifactoriamente.");
 
-			System.out.println("*******Se va a guardar el archivo*******");
+			logger.debug("Se va a guardar el archivo");
 
 			InputStream input = file.getInputstream();
 
-			System.out.println("*******Se guardo el archivo*******");
-
-			System.out.println("Se va a copiar el archvo a " + file2.toPath());
+			logger.debug("Se guardo el archivo");
+			logger.debug("Se va a copiar el archvo a " + file2.toPath());
 
 			Files.copy(input, file2.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
 			return "/deals/cuponesdia.xhtml" + "?faces-redirect=true";
 
 		} catch (Exception e) {
-
 			Messageutil.mensajeError(
 					"Error al intentar guardar la oferta. " + e.getMessage() + "Error: " + e.getCause().toString());
-
-			e.printStackTrace();
+			logger.error("Error al intentar guardar la oferta.", e);
 
 		}
 
@@ -204,17 +203,17 @@ public class OfertaBean implements Serializable {
 	// Creamos el metodo de consultar la oferta
 	public void consultaOferta() {
 
-		System.out.println("Ejecutando el metodo buscar.");
+		logger.debug("Ejecutando el metodo buscar.");
 
 		Messageutil.mensajeInfo("Se esta ejecutando el metodo consultar");
 
-		System.out.println(oferta.getIdOferta() + " Oferta");
+		logger.debug(oferta.getIdOferta() + " Oferta");
 
 		oferta = ofertaService.findOfertaById(new Oferta(oferta.getIdOferta()));
 
 		oferta.setFotos(null);
 
-		System.out.println("Se esta ejecutando el metodo consultar");
+		logger.debug("Se esta ejecutando el metodo consultar");
 
 	}
 
@@ -232,7 +231,7 @@ public class OfertaBean implements Serializable {
 	}
 
 	public boolean desavilita(boolean a) {
-		System.out.println("Se desavilito el buscador de imagen");
+		logger.debug("Se desavilito el buscador de imagen");
 		return a;
 	}
 
@@ -243,14 +242,6 @@ public class OfertaBean implements Serializable {
 	public void setOfertas(List<Oferta> ofertas) {
 		this.ofertas = ofertas;
 	}
-
-	// public List<String> getFotos() {
-	// return fotos;
-	// }
-	//
-	// public void setFotos(List<String> fotos) {
-	// this.fotos = fotos;
-	// }
 
 	public Oferta getOferta() {
 		return oferta;

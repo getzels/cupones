@@ -16,14 +16,12 @@ public class EstadoDaoImpl implements EstadoDao {
 	EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Estado> findAllEstado() {
 		List<Estado> estados = em.createNamedQuery("Estado.findAll").getResultList();
 		//estados.size();
 		return estados;
 	}
 
-	@Override
 	public Estado findEstadoById(Estado estado) {
 		Query query = em.createQuery("select e from Estado e where e.idEstado = :id");
 		query.setParameter("id", estado.getIdEstado());
@@ -35,7 +33,6 @@ public class EstadoDaoImpl implements EstadoDao {
 		return estadoReturn;
 	}
 	
-	@Override
 	public Estado findEstadoByName(Estado estado){
       Query query = em.createQuery("select e from Estado e where e.estadoDescripcion like :desc");
       
@@ -50,19 +47,16 @@ public class EstadoDaoImpl implements EstadoDao {
 		
 	}
 
-	@Override
 	public void addEstado(Estado estado) {
 		em.persist(estado);
 
 	}
 
-	@Override
 	public void updateEstado(Estado estado) {
 		em.merge(estado);
 
 	}
 
-	@Override
 	public void deleteEstado(Estado estado) {
 		estado = em.find(Estado.class, estado.getIdEstado());
 		em.remove(estado);

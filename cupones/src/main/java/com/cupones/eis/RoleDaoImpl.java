@@ -17,13 +17,13 @@ public class RoleDaoImpl implements RoleDao {
 	EntityManager em;
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Role> findAllRole() {
 		return em.createNamedQuery("Role.findAll").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Role> findRoleByUser(Role role) {
 	  Query query = em.createQuery("from Role r where r.usuario.idUsuario = :idUser ");
 	  query.setParameter("idUser",role.getUsuario().getIdUsuario());
@@ -31,17 +31,17 @@ public class RoleDaoImpl implements RoleDao {
 	  return query.getResultList();
 	}
 
-	@Override
+	
 	public void addRole(Role role) {
 	em.persist(role);
 	}
 
-	@Override
+	
 	public void updateRole(Role role) {
 		em.merge(role);
 	}
 
-	@Override
+	
 	public void deleteRole(Role role) {
 	role = em.find(Role.class, role.getId());
 	em.remove(role);

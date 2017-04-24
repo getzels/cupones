@@ -15,29 +15,29 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
 	@EJB
 	DetallePedidoDao detallePedidoDao;
 
-	@Override
+	
 	public List<DetallePedido> findAllDetallePedido() {
 		return detallePedidoDao.findAllDetallePedido();
 	}
 
-	@Override
+	
 	public DetallePedido findDetallePedidoById(DetallePedido detallePedido) {
 		return detallePedidoDao.findDetallePedidoById(detallePedido);
 	}
 
-	@Override
+	
 	public void addDetallePedido(DetallePedido detallePedido) {
 		detallePedidoDao.addDetallePedido(detallePedido);
 
 	}
 
-	@Override
+	
 	public void updateDetallePedido(DetallePedido detallePedido) {
 		detallePedidoDao.updateDetallePedido(detallePedido);
 
 	}
 
-	@Override
+	
 	public void deleteDetallePedido(DetallePedido detallePedido) {
 		detallePedidoDao.deleteDetallePedido(detallePedido);
 		}

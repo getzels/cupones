@@ -5,10 +5,12 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.cupones.domain.Usuario;
 
@@ -20,14 +22,15 @@ public class SessionBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = LogManager.getLogger(SessionBean.class);
 	private Usuario usuario;
 
 	public SessionBean() {
 		/*
-		 * this.usuario = SessionBean.getUsuario(); System.out.println(
+		 * this.usuario = SessionBean.getUsuario(); logger.debug(
 		 * "Constructor SessionBean(1)"); if (this.usuario != null) {
-		 * System.out.println("Se instacion el objecto usuario " + usuario); }
-		 * else { System.out.println("No se inicio el objecto en el costructor."
+		 * logger.debug("Se instacion el objecto usuario " + usuario); }
+		 * else { logger.debug("No se inicio el objecto en el costructor."
 		 * ); }
 		 */
 	}
@@ -35,7 +38,7 @@ public class SessionBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.usuario = getUsurioSession();
-		System.out.println("Se ejecuto el metodo init SessionBean " + this.usuario);
+		logger.debug("Se ejecuto el metodo init SessionBean " + this.usuario);
 	}
 
 	public static HttpSession getSession() {
@@ -48,7 +51,7 @@ public class SessionBean implements Serializable {
 
 	public static Usuario getUsurioSession() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		System.out.println("Se obtuvo el usuario " + session.getAttribute("usuario"));
+		logger.debug("Se obtuvo el usuario " + session.getAttribute("usuario"));
 		return (Usuario) session.getAttribute("usuario");
 	}
 

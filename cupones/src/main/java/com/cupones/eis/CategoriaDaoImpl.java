@@ -16,14 +16,12 @@ public class CategoriaDaoImpl implements CategoriaDao {
 	EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Categoria> findAllCategoria() {
 		List<Categoria> categorias = em.createNamedQuery("Categoria.findAll").getResultList();
 		categorias.size();
 		return categorias;
 	}
 
-	@Override
 	public Categoria findCategoriaById(Categoria categoria) {
 		Query query = em.createQuery("select c from Categoria c where c.idCategoria = :id" );
 		//Pasamos los parametros al objeto query.
@@ -34,7 +32,6 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		return categoriaReturn;
 	}
 	
-	@Override
 	public Categoria findCategoriaByName(Categoria categoria){
 		Query query = em.createQuery("select c from Categoria c where c.nombreCategoria like :desc");
 		
@@ -49,19 +46,16 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		
 	}
 
-	@Override
 	public void addCategoria(Categoria categoria) {
 		em.persist(categoria);
 
 	}
 
-	@Override
 	public void updateCategoria(Categoria categoria) {
 		em.merge(categoria);
 
 	}
 
-	@Override
 	public void deleteCategoria(Categoria categoria) {
 		categoria = this.findCategoriaById(categoria);
 		em.remove(categoria);

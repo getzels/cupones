@@ -3,6 +3,7 @@
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/servicio/RoleService.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/beans/MenuBean.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/beans/FotoBean.java
+/home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/types/OfertaType.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/domain/FotoPK.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/servicio/EstadoServiceImpl.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/servicio/SectorServiceImpl.java
@@ -82,9 +83,11 @@
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/servicio/DetalleSolicitudService.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/beans/LibroDireccioneBean.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/servicio/OfertaServiceImpl.java
+/home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/excepciones/InternalServicesException.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/eis/OfertaDao.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/beans/UsuarioBean.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/beans/SessionBean.java
+/home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/util/Constantes.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/servicio/DetallePedidoServiceImpl.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/domain/Categoria.java
 /home/noskra/git-repos/cupones/cupones/src/main/java/com/cupones/servicio/DetalleSolicitudServiceImpl.java

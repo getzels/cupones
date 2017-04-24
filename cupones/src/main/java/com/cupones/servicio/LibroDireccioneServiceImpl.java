@@ -16,29 +16,29 @@ public class LibroDireccioneServiceImpl implements LibroDireccioneService {
 	private LibroDireccioneDao libroDireccioneDao;
 	
 	
-	@Override
+	
 	public List<LibroDireccione> findAllLibroDireccione() {
 		return libroDireccioneDao.findAllLibroDireccione();
 	}
 
-	@Override
+	
 	public List<LibroDireccione> findLibroDireccioneById(Usuario usuario) {
 		return libroDireccioneDao.findLibroDireccioneById(usuario);
 	}
 
-	@Override
+	
 	public void addLibroDireccione(LibroDireccione libroDireccione) {
 		libroDireccioneDao.addLibroDireccione(libroDireccione);
 
 	}
 
-	@Override
+	
 	public void updateLibroDireccione(LibroDireccione libroDireccione) {
 		libroDireccioneDao.updateLibroDireccione(libroDireccione);
 
 	}
 
-	@Override
+	
 	public void deleteLibroDireccione(LibroDireccione libroDireccione) {
 		libroDireccioneDao.deleteLibroDireccione(libroDireccione);
 	}

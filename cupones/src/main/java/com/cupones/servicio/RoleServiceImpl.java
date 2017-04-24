@@ -15,28 +15,28 @@ public class RoleServiceImpl implements RoleService {
 	@EJB
 	RoleDao roleDao;
 	
-	@Override
+	
 	public List<Role> findAllRole() {
 		return roleDao.findAllRole();
 	}
 
-	@Override
+	
 	public List<Role> findRoleByUser(Role role) {
 	  return roleDao.findRoleByUser(role);
 	  
 	}
 
-	@Override
+	
 	public void addRole(Role role) {
 		roleDao.addRole(role);
 	}
 
-	@Override
+	
 	public void updateRole(Role role) {
 		roleDao.updateRole(role);
 	}
 
-	@Override
+	
 	public void deleteRole(Role role) {
 		roleDao.deleteRole(role);
 	}

@@ -16,28 +16,28 @@ public class SectorDaoImpl implements SectorDao {
 	EntityManager em;
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	
 	public List<Sector> findAllSector() {
 		return em.createNamedQuery("Sector.findAll").getResultList();
 	}
 
-	@Override
+	
 	public Sector findSectorById(Sector sector) {
 		return em.find(Sector.class, sector.getIdSector());
 	}
 
-	@Override
+	
 	public void addSector(Sector sector) {
 		em.persist(sector);
 
 	}
 
-	@Override
+	
 	public void updateSector(Sector sector) {
 	em.merge(sector);
 	}
 
-	@Override
+	
 	public void deleteSector(Sector sector) {
    sector = em.find(Sector.class, sector.getIdSector());
    em.remove(sector);

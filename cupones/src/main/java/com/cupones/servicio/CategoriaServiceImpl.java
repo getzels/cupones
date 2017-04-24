@@ -16,34 +16,34 @@ public class CategoriaServiceImpl implements CategoriaService {
     CategoriaDao categoriaDao;
 	
 	
-	@Override
+	
 	public List<Categoria> findAllCategoria() {
 	return categoriaDao.findAllCategoria();	
 	}
 
-	@Override
+	
 	public Categoria findCategoriaById(Categoria categoria) {
 		return categoriaDao.findCategoriaById(categoria);
 	}
 
 	
-	@Override
+	
 	public Categoria findCategoriaByName(Categoria categoria){
 		return categoriaDao.findCategoriaByName(categoria);
 	}
-	@Override
+	
 	public void addCategoria(Categoria categoria) {
 		categoriaDao.addCategoria(categoria);
 
 	}
 
-	@Override
+	
 	public void updateCategoria(Categoria categoria) {
 		categoriaDao.updateCategoria(categoria);
 
 	}
 
-	@Override
+	
 	public void deleteCategoria(Categoria categoria) {
 		categoriaDao.deleteCategoria(categoria);
 	}
