@@ -13,7 +13,7 @@ import com.cupones.eis.FotoDao;
 public class FotoServiceImpl implements FotoService {
 
 	@EJB
-	FotoDao fotoDao;
+	private FotoDao fotoDao;
 
 	
 	
@@ -23,7 +23,11 @@ public class FotoServiceImpl implements FotoService {
 
 	
 	public List<Foto> findFotoById(Foto foto) {
-		return fotoDao.findFotoById(foto);
+		Foto fotoReturn;
+		if (foto != null){
+		fotoReturn = fotoDao.findFotoById(foto);
+		}
+		return fotoReturn;
 	}
 
 	
