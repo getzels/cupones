@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Alternative;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import com.cupones.domain.Foto;
 import com.cupones.domain.Oferta;
@@ -13,58 +15,54 @@ import com.cupones.eis.OfertaDao;
 @Stateless
 public class OfertaServiceImpl implements OfertaService {
 
+	private static final Logger logger = LogManager.getLogger(OfertaServiceImpl.class);
+	
 	@EJB
 	OfertaDao ofertaDao;
 
-	@Override
+	
 	public List<Oferta> findAllOferta() {
 		return ofertaDao.findAllOferta();
 	}
 
-	@Override
+	
 	public Oferta findOfertaById(Oferta oferta) {
-		System.out.println("Inicio de service");
-		System.out.println("Oferta ? " + oferta);
+		
 		if (oferta != null){
-			System.out.println("Hola mundo");
-		return ofertaDao.findOfertaById(oferta);}else{
-			System.out.println("oferta esta nula en ofertaService");
+			return ofertaDao.findOfertaById(oferta);
 		}
+		
 		return oferta;
 		
 	}
 
-	@Override
+	
 	public void addOferta(Oferta oferta) {
 		ofertaDao.addOferta(oferta);
 
 	}
 
-	@Override
+	
 	public void updateOferta(Oferta oferta) {
 		ofertaDao.updateOferta(oferta);
-
 	}
 
-	@Override
+	
 	public void deleteOferta(Oferta oferta) {
 		ofertaDao.deleteOferta(oferta);
 	}
 
-	@Override
+	
 	public boolean validaOfertaExistente(Oferta oferta) {
-		Oferta ofertaReturn = null;
-		ofertaReturn = findOfertaById(oferta);
+		logger.trace("Entrada al metodo validaOfertaExistente");
+		logger.trace("oferta",oferta);
+		Oferta ofertaReturn = findOfertaById(oferta);
 
-		if (ofertaReturn != null){
-			return true;
-		}else{
-			return false;
-		}
+			return ofertaReturn != null ? true : false;
 
 	}
 
-	@Override
+	
 	public List<Foto> findFotosOferta(Oferta oferta) {
 		return  ofertaDao.findFotosOferta(oferta);
 	}

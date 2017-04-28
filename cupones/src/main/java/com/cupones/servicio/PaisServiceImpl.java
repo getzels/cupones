@@ -16,27 +16,27 @@ public class PaisServiceImpl implements PaisService {
 	PaisDao paisDao;
 
 	
-	@Override
+	
 	public List<Pais> findAllPais() {
 		return paisDao.findAllPais();
 	}
 
-	@Override
+	
 	public Pais findPaisById(Pais pais) {
 		return paisDao.findPaisById(pais);
 	}
 
-	@Override
+	
 	public void addPais(Pais pais) {
 		paisDao.addPais(pais);
 	}
 
-	@Override
+	
 	public void updatePais(Pais pais) {
 		paisDao.updatePais(pais);
 	}
 
-	@Override
+	
 	public void deletePais(Pais pais) {
 		paisDao.deletePais(pais);
 	}

@@ -16,29 +16,29 @@ public class DetalleSolicitudServiceImpl implements DetalleSolicitudService {
 	DetalleSolicitudDao detalleSolicitudDao;
 
 	
-	@Override
+	
 	public List<DetalleSolicitud> findAllDetalleSolicitud() {
 		return detalleSolicitudDao.findAllDetalleSolicitud();
 	}
 
-	@Override
+	
 	public DetalleSolicitud findDetalleSolicitudById(DetalleSolicitud detalleSolicitud) {
 		return detalleSolicitudDao.findDetalleSolicitudById(detalleSolicitud);
 	}
 
-	@Override
+	
 	public void addDetalleSolicitud(DetalleSolicitud detalleSolicitud) {
 		detalleSolicitudDao.addDetalleSolicitud(detalleSolicitud);
 
 	}
 
-	@Override
+	
 	public void updateDetalleSolicitud(DetalleSolicitud detalleSolicitud) {
 		detalleSolicitudDao.updateDetalleSolicitud(detalleSolicitud);
 
 	}
 
-	@Override
+	
 	public void deleteDetalleSolicitud(DetalleSolicitud detalleSolicitud) {
 		detalleSolicitudDao.deleteDetalleSolicitud(detalleSolicitud);
 	}

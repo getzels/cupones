@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:m="http://code.google.com/p/gmaps4jsf/"
+	xmlns:mashup="http://code.google.com/p/mashups4jsf/"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Listado de Cupones</title>
+	<h:outputStylesheet library="css" name="menu.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet library="css" name="cart.css"/>
+
+</h:head>
+
+<h:body>
+
+	<ui:composition template="../temples/TempleComon.xhtml">
+
+		<ui:define name="contents">
+
+			<h:form>
+				<div id="contenido">
+					<!-- 				<p:growl id="growl" life="3000" /> -->
+					<p:dataGrid id="tabla" var="deal" value="#{cartBean.itemsCarrito}"
+						columns="1">
+						<p:panelGrid columns="1" styleClass="width: 100%;" layout="grid"
+							rows="11" paginator="true" id="listaOferta">
+							<p:panelGrid columns="4" id="panel2">
+								<p:column colspan="10">
+									<p:dataGrid id="fotos" var="foto"
+										value="#{deal.oferta.fotos.get(0)}">
+										<h:graphicImage value="#{foto.rutaFotoP}"
+											style="width: 90px;height:90px;" />
+									</p:dataGrid>
+								</p:column>
+								<p:column styleClass="columns">
+									<h:outputLabel value="#{deal.oferta.detalleOferta}" />
+								</p:column>
+								<p:column>
+									<h:outputLabel value="#{deal.valorOferta}" />
+								</p:column>
+								<p:column>
+									<p:growl id="mensaje" life="3000" />
+									<p:commandLink
+										actionListener="#{cartBean.eliminaOfertaCarrito(deal)}"
+										update="@all">
+										<h:outputText value="Eliminar" />
+										<p:confirm header="Confirmación"
+											message="Esta seguro de elimiar la oferta?"
+											icon="ui-icon-alert" />
+										<p:ajax />
+									</p:commandLink>
+
+									<p:confirmDialog global="true" showEffect="fade"
+										hideEffect="explode">
+										<p:commandButton value="Si" type="button"
+											styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+										<p:commandButton value="No" type="button"
+											styleClass="ui-confirmdialog-no" icon="ui-icon-check" />
+									</p:confirmDialog>
+
+								</p:column>
+							</p:panelGrid>
+						</p:panelGrid>
+					</p:dataGrid>
+
+				</div>
+				<div id="lateral">
+					----------Resumen del carrito---jj------- <br /> <br /> <br />
+					<p:growl id="growl" life="2000" />
+					<p:commandButton id="checkout" update="growl" value="checkout"
+						styleClass="ui-priority-primary" />
+					<br /> <br /> <br />
+					<div id="Totales"></div>
+
+					<p:panelGrid columns="2">
+						<h:outputLabel value="subtotal(1 artículo): " />
+						<h:outputLabel id="subtotal" value="#{cartBean.subTotal}" />
+						<p:outputLabel value="Envio a (direccion): " />
+						<h:outputLabel id="envio" value="#{cartBean.direccionEnvio}" />
+					</p:panelGrid>
+					<br /> <br /> <br />
+					<!-- 			Otras ofertas -->
+					<p:dataGrid id="tabla2" var="deal" value="#{ofertaBean.ofertas}"
+						columns="1" rows="5" style="width:345px">
+						<!-- 				<p:panel styleClass="panel_main" header="#{deal.nombreOferta}"> -->
+
+						<h:panelGrid id="panelgrid" style="width:100%" columns="1">
+							<p:outputPanel id="panelfoto" styleClass="panel">
+								<p:dataGrid id="fotoDataGrid" var="foto" value="#{deal.fotos}"
+									columns="1" rows="1" styleClass="panel">
+									<p:commandLink action="#{ofertaBean.eligeOferta(deal)}"
+										immediate="true">
+										<p:graphicImage styleClass="imagenes"
+											value="#{foto.rutaFotoP}" alt="#{foto.descripcion}"
+											title="#{foto.descripcion}" />
+									</p:commandLink>
+								</p:dataGrid>
+							</p:outputPanel>
+							<p:outputPanel id="description" styleClass="panel">
+								<p>
+									<h:outputLabel value="#{deal.nombreOferta}" />
+								</p>
+							</p:outputPanel>
+
+							<p:outputPanel id="precios" styleClass="panel">
+								<p:panelGrid columns="1" style="width:100%">
+									<p:outputLabel value="Valor:  ........ #{deal.valorOferta}" />
+									<p:outputLabel value="Ahorro: ........ #{deal.ahoroOferta}" />
+									<p:outputLabel value="Precio: ........ #{deal.precioOferta}" />
+								</p:panelGrid>
+							</p:outputPanel>
+						</h:panelGrid>
+						<!-- 				</p:panel> -->
+					</p:dataGrid>
+
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

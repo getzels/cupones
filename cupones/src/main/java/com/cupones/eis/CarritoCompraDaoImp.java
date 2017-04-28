@@ -1,4 +1,4 @@
-package com.cupones.eis;
+ package com.cupones.eis;
 
 import java.util.List;
 
@@ -18,13 +18,11 @@ public class CarritoCompraDaoImp implements CarritoCompraDao {
 	EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<CarritoCompra> findAllCarritoCompra() {
 		return em.createNamedQuery("CarritoCompra.findAll").getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
+
 	public List<CarritoCompra> findDatosCarritoById(Cliente cliente) {
 		
 		List<CarritoCompra> carritoCompras;
@@ -39,18 +37,18 @@ public class CarritoCompraDaoImp implements CarritoCompraDao {
 		return carritoCompras;
 	}
 
-	@Override
+	
 	public void addCarritoCompra(CarritoCompra carritoCompra) {
 		em.persist(carritoCompra);
 	}
 
-	@Override
+	
 	public void updateCarritoCompra(CarritoCompra carritoCompra) {
 		em.merge(carritoCompra);
 
 	}
 
-	@Override
+	
 	public void deleteCarritoCompra(CarritoCompra carritoCompra) {
 		System.out.println("Se inicio el medoto deleteCarritoCompra de CarritoComprasDaoImp");
 		System.out.println(carritoCompra);

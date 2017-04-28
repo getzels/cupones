@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:m="http://code.google.com/p/gmaps4jsf/"
+	xmlns:mashup="http://code.google.com/p/mashups4jsf/"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Listado de Cupones</title>
+	<h:outputStylesheet library="css" name="menu.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet library="css" name="cart.css"/>
+
+</h:head>
+<ui:composition>
+<h:head>
+<h:outputStylesheet library="css" name="menu.css"/>
+<h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+<p:outputPanel id="header-inner" styleClass="cabeza" deferred="TRUE"
+		deferredMode="visible">
+<!-- 299   
+0924 62 -->
+		<a href="../index.xhtml"><p:graphicImage value="../imagenes/logo.png"
+				width="327" height="115" /></a>
+		<h:form>
+			<p:outputPanel id="listCiudades" styleClass="listCiudades">
+				<p:dataGrid columns="2">
+					<h:outputLabel value="Cerca de ti" for="listaCiudades" />
+					<p:selectOneMenu id="listaCiudades" value="#{menuBean.ciudad}">
+						<f:selectItem itemLabel="Seleccione una" itemValue="" />
+						<f:selectItems value="#{menuBean.ciudades}" />
+					</p:selectOneMenu>
+				</p:dataGrid>
+			</p:outputPanel>
+
+			<nav class="topMenu">
+				<ul id="menu">
+					<li><a href="../deals/cuponesdia.xhtml">Todas las Ofertas</a></li>
+					<li><a href="#">Oferta de Hoy</a></li>
+					<li><a href="#">Belleza y Spa</a></li>
+					<li><a href="#">Restaurantes</a></li>
+					<li><a href="#">Auto</a></li>
+					<li><a href="#">Hoteles y Entretenimiento</a></li>
+					<li></li>
+					<li><a href="#">San Valentin</a></li>
+					<li><div class="#"></div> <a href="#">Navidad</a></li>
+					<li><a href="../admin/creaoferta.xhtml">Crea Oferta</a></li>
+				</ul>
+			</nav>
+		</h:form>
+	</p:outputPanel>
+</ui:composition>
+</html>

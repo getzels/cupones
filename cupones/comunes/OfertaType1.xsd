@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="detalleSolicitud">
+    <xs:sequence>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="id" type="detalleSolicitudPK" minOccurs="0"/>
+      <xs:element name="oferta" type="oferta" minOccurs="0"/>
+      <xs:element name="sodDescuento" type="xs:double"/>
+      <xs:element name="sodItbis" type="xs:double"/>
+      <xs:element name="sodMoneda" type="xs:string" minOccurs="0"/>
+      <xs:element name="sodMonto" type="xs:double"/>
+      <xs:element name="sodNeto" type="xs:double"/>
+      <xs:element name="solicitud" type="solicitud" minOccurs="0"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleSolicitudPK">
+    <xs:sequence>
+      <xs:element name="idOferta" type="xs:int"/>
+      <xs:element name="idSolicitud" type="xs:int"/>
+      <xs:element name="linea" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="oferta">
+    <xs:sequence>
+      <xs:element name="categoria" type="categoria" minOccurs="0"/>
+      <xs:element name="descuetoOferta" type="xs:int"/>
+      <xs:element name="detalleOferta" type="xs:string" minOccurs="0"/>
+      <xs:element name="detalleSolicituds" type="detalleSolicitud" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="estado" type="estado" minOccurs="0"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fotos" type="foto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="idOferta" type="xs:int"/>
+      <xs:element name="nombreOferta" type="xs:string" minOccurs="0"/>
+      <xs:element name="tiempoOferta" type="xs:int"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="categoria">
+    <xs:sequence>
+      <xs:element name="catEstado" type="xs:int"/>
+      <xs:element name="descripcionCategoria" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="idCategoria" type="xs:int"/>
+      <xs:element name="nombreCategoria" type="xs:string" minOccurs="0"/>
+      <xs:element name="ofertas" type="oferta" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="estado">
+    <xs:sequence>
+      <xs:element name="estadoDescripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="idEstado" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="foto">
+    <xs:sequence>
+      <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fotoEstado" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="fotoPK" minOccurs="0"/>
+      <xs:element name="oferta" type="oferta" minOccurs="0"/>
+      <xs:element name="rutaFoto" type="xs:string" minOccurs="0"/>
+      <xs:element name="rutaFotoP" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fotoPK">
+    <xs:sequence>
+      <xs:element name="idFotos" type="xs:int"/>
+      <xs:element name="nombreFoto" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="solicitud">
+    <xs:sequence>
+      <xs:element name="cliente" type="cliente" minOccurs="0"/>
+      <xs:element name="descuentoSolicitud" type="xs:double"/>
+      <xs:element name="detalleSolicitudes" type="detalleSolicitud" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="estadoSolicitud" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaImpresion" type="xs:string" minOccurs="0"/>
+      <xs:element name="idSolicitud" type="xs:int"/>
+      <xs:element name="itbisSolicitud" type="xs:double"/>
+      <xs:element name="montoSolicitud" type="xs:double"/>
+      <xs:element name="netoSolicitud" type="xs:double"/>
+      <xs:element name="observacionesSolicitud" type="xs:string" minOccurs="0"/>
+      <xs:element name="pedidos" type="pedido" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="solIndTransporte" type="xs:string" minOccurs="0"/>
+      <xs:element name="solicitudFecha" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="tasaSolicitud" type="xs:int"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cliente">
+    <xs:sequence>
+      <xs:element name="cltDireccion1" type="xs:string" minOccurs="0"/>
+      <xs:element name="cltDireccion2" type="xs:string" minOccurs="0"/>
+      <xs:element name="cltEmail" type="xs:string" minOccurs="0"/>
+      <xs:element name="cltFechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="cltFechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="cltRnc" type="xs:string" minOccurs="0"/>
+      <xs:element name="cltTelefono1" type="xs:string" minOccurs="0"/>
+      <xs:element name="cltTelefono2" type="xs:string" minOccurs="0"/>
+      <xs:element name="idCliente" type="xs:int"/>
+      <xs:element name="nombreCliente" type="xs:string" minOccurs="0"/>
+      <xs:element name="solicitudes" type="solicitud" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+      <xs:element name="usuarios" type="usuario" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="calle" type="xs:string" minOccurs="0"/>
+      <xs:element name="cliente" type="cliente" minOccurs="0"/>
+      <xs:element name="contrasena" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="idUsuario" type="xs:int"/>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroCasoLocal" type="xs:int"/>
+      <xs:element name="preguntaSecreta" type="xs:string" minOccurs="0"/>
+      <xs:element name="respuestaPregunta" type="xs:string" minOccurs="0"/>
+      <xs:element name="roles" type="role" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="sector" type="sector" minOccurs="0"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="role">
+    <xs:sequence>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="id" type="rolePK" minOccurs="0"/>
+      <xs:element name="roleNombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+      <xs:element name="usuario" type="usuario" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="rolePK">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int"/>
+      <xs:element name="roleId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sector">
+    <xs:sequence>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="idSector" type="xs:int"/>
+      <xs:element name="provincia" type="provincia" minOccurs="0"/>
+      <xs:element name="sectorDescripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+      <xs:element name="usuarios" type="usuario" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="provincia">
+    <xs:sequence>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="idProvincia" type="xs:int"/>
+      <xs:element name="pais" type="pais" minOccurs="0"/>
+      <xs:element name="proDescripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="proDescripcionCorta" type="xs:string" minOccurs="0"/>
+      <xs:element name="sectors" type="sector" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pais">
+    <xs:sequence>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="idPais" type="xs:int"/>
+      <xs:element name="paisDescripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="paisDescripcionCorta" type="xs:string" minOccurs="0"/>
+      <xs:element name="provincias" type="provincia" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pedido">
+    <xs:sequence>
+      <xs:element name="descuentoPedido" type="xs:double"/>
+      <xs:element name="detallePedidos" type="detallePedido" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="estadoPedido" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaImpresion" type="xs:string" minOccurs="0"/>
+      <xs:element name="idPedido" type="xs:int"/>
+      <xs:element name="itbisPedido" type="xs:double"/>
+      <xs:element name="montoPedido" type="xs:double"/>
+      <xs:element name="netoPedido" type="xs:double"/>
+      <xs:element name="observacionesPedido" type="xs:string" minOccurs="0"/>
+      <xs:element name="solicitud" type="solicitud" minOccurs="0"/>
+      <xs:element name="solicitudFecha" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="tasaPedido" type="xs:int"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detallePedido">
+    <xs:sequence>
+      <xs:element name="descuentoPedido" type="xs:double"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="id" type="detallePedidoPK" minOccurs="0"/>
+      <xs:element name="itbisPedido" type="xs:double"/>
+      <xs:element name="monedaMoneda" type="xs:string" minOccurs="0"/>
+      <xs:element name="montoPedido" type="xs:double"/>
+      <xs:element name="netoPedido" type="xs:double"/>
+      <xs:element name="pedido" type="pedido" minOccurs="0"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detallePedidoPK">
+    <xs:sequence>
+      <xs:element name="idPedido" type="xs:int"/>
+      <xs:element name="linea" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tarjeta">
+    <xs:sequence>
+      <xs:element name="anoExpira" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="id" type="tarjetaPK" minOccurs="0"/>
+      <xs:element name="idPreferida" type="xs:string" minOccurs="0"/>
+      <xs:element name="idTarjeta" type="xs:string" minOccurs="0"/>
+      <xs:element name="mesExpira" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tarjetaPK">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int"/>
+      <xs:element name="numTarjeta" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="carritoCompraPK">
+    <xs:sequence>
+      <xs:element name="idCliente" type="xs:int"/>
+      <xs:element name="idOferta" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="libroDireccione">
+    <xs:sequence>
+      <xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoPostal" type="xs:string" minOccurs="0"/>
+      <xs:element name="direccion1" type="xs:string" minOccurs="0"/>
+      <xs:element name="direccion2" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="libroDireccionePK" minOccurs="0"/>
+      <xs:element name="idEstado" type="xs:int"/>
+      <xs:element name="idPais" type="xs:int"/>
+      <xs:element name="idProvincia" type="xs:int"/>
+      <xs:element name="idSector" type="xs:int"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="telefono" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="libroDireccionePK">
+    <xs:sequence>
+      <xs:element name="idDirecciones" type="xs:int"/>
+      <xs:element name="idUsuario" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="carritoCompra">
+    <xs:sequence>
+      <xs:element name="cantidad" type="xs:int"/>
+      <xs:element name="fechaHoraCrea" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fechaHoraModi" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="id" type="carritoCompraPK" minOccurs="0"/>
+      <xs:element name="oferta" type="oferta" minOccurs="0"/>
+      <xs:element name="usrCodigoCrea" type="xs:string" minOccurs="0"/>
+      <xs:element name="usrCodigoModi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -7,6 +7,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.cupones.domain.Categoria;
 import com.cupones.servicio.CategoriaService;
 
@@ -14,43 +17,48 @@ import com.cupones.servicio.CategoriaService;
 @FacesConverter("com.cupones.util.CategoriaConverter")
 public class CategoriaConverter implements Converter {
 
+	private static final Logger logger = LogManager.getLogger(SectorConverter.class);
+	
 	@EJB
-	CategoriaService categoriaService;
+	private CategoriaService categoriaService;
 
-	@Override
 	public Object getAsObject(FacesContext facesContext, UIComponent component,
 			String value) {
+		
+		logger.trace("getAsObject in CategoriaConverter");
 
 		try {
 			
 			if (!value.isEmpty()) {
-				System.out.println("Se esta buscando la categoria "  + value);
+				logger.debug("Se esta buscando la categoria "  + value);
 				
 				Categoria categotia = categoriaService.findCategoriaById(new Categoria(Integer.parseInt(value)));
 
-				 System.out.println("****" + categotia);
+				 logger.debug("****" + categotia);
 				if (categotia != null) {
-					System.out.println("Retorno una categoria");
+					logger.debug("Retorno una categoria");
 					return categotia;
 				}
 
 			}
 
 		} catch (Exception e) {
-			Messageutil.mensajeError("Error convirtiendo el estado.");
+			logger.error("Error convirtiendo la categoria. ", e);
+			Messageutil.mensajeError("Error convirtiendo la categoria.");
+		}finally{
+			logger.traceExit();
 		}
-		System.out.println("Retorno nulo");
+		logger.debug("Retorno nulo");
 		return null;
 	}
-
-	@Override
+	
 	public String getAsString(FacesContext facesContext, UIComponent component,
 			Object value) {
 
 		if (value instanceof Categoria) {
 			return String.valueOf(((Categoria) value).getIdCategoria());
 		}
-		System.out.println("Retorno nulo 2");
+		logger.debug("Retorno nulo 2");
 		return null;
 	}
 }
